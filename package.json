@@ -1,0 +1,17 @@
+{
+  "name": "chicago",
+  "version": "0.0.0",
+  "description": "libchicago",
+  "main": "index.js",
+  "author": "Charley Robinson",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@types/assert": "^1.5.10",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "assert": "^2.1.0"
+  }
+}
