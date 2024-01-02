@@ -1,29 +1,14 @@
 import assert from "assert";
 
-export class Model {
-  private unsavedChanges: Map<string | symbol, any>;
+export abstract class Model {
+  protected _unsavedChanges: Map<string | symbol, any>;
+  protected _savedChanges: Map<string | symbol, any>;
+  protected _loaded = false;
 
   constructor() {
-    this.unsavedChanges = new Map<string | symbol, any>();
+    this._unsavedChanges = new Map<string | symbol, any>();
+    this._savedChanges = new Map<string | symbol, any>();
   }
 
-  save(): void {
-    console.log("saveMe");
-  }
-
-  public static Property(target: Object, propertyName: string | symbol): void {
-    console.log(target, propertyName);
-    assert(target instanceof Model);
-    Object.defineProperty(target, propertyName, {
-      set(value: any) {
-        console.log("override set", propertyName, value);
-        target.unsavedChanges.set(propertyName, value);
-        // this[propertyName] = value;
-      },
-      get() {
-        console.log("override get", typeof target);
-        return this.unsavedChanges.get(propertyName);
-      },
-    });
-  }
+  public abstract get documentKey(): string;
 }
